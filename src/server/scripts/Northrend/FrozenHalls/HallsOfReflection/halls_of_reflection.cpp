@@ -15,11 +15,8 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "AreaTriggerScript.h"
-#include "CreatureScript.h"
-#include "MotionMaster.h"
-#include "SpellScriptLoader.h"
 #include "halls_of_reflection.h"
+#include "MotionMaster.h"
 
 enum Events
 {
@@ -148,18 +145,41 @@ public:
 
         if (canStart)
         {
-            QuestStatus status = player->GetQuestStatus(creature->GetEntry() == NPC_SYLVANAS_PART1 ? QUEST_DELIVRANCE_FROM_THE_PIT_H2 : QUEST_DELIVRANCE_FROM_THE_PIT_A2);
+            QuestStatus status = player->GetQuestStatus(creature->GetEntry() == NPC_SYLVANAS_PART1 ? QUEST_DELIVRANCE_FROM_THE_PIT_H2 : QUEST_DELIVRANCE_FROM_THE_PIT_H2);
             if (status == QUEST_STATUS_COMPLETE || status == QUEST_STATUS_REWARDED)
-                {
-                    AddGossipItemFor(player, creature->GetEntry() == NPC_SYLVANAS_PART1 ? GOSSIP_MENU_SYLVANAS : GOSISP_MENU_JAINA, GOSSIP_OPTION_START, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
-                }
+            {
+                AddGossipItemFor(player, creature->GetEntry() == NPC_SYLVANAS_PART1 ? GOSSIP_MENU_SYLVANAS : GOSISP_MENU_JAINA, GOSSIP_OPTION_START, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
+            }
 
             // once last quest is completed, she offers this shortcut of the starting event
-            status = player->GetQuestStatus(creature->GetEntry() == NPC_SYLVANAS_PART1 ? QUEST_WRATH_OF_THE_LICH_KING_H2 : QUEST_WRATH_OF_THE_LICH_KING_A2);
+            status = player->GetQuestStatus(creature->GetEntry() == NPC_SYLVANAS_PART1 ? QUEST_WRATH_OF_THE_LICH_KING_H2 : QUEST_WRATH_OF_THE_LICH_KING_H2);
             if (status == QUEST_STATUS_COMPLETE || status == QUEST_STATUS_REWARDED)
             {
                 AddGossipItemFor(player, creature->GetEntry() == NPC_SYLVANAS_PART1 ? GOSSIP_MENU_SYLVANAS : GOSISP_MENU_JAINA, GOSSIP_OPTION_START_SKIP, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
             }
+        }
+
+
+
+        if (canStart)
+        {
+            QuestStatus status = player->GetQuestStatus(creature->GetEntry() == NPC_JAINA_PART1 ? QUEST_DELIVRANCE_FROM_THE_PIT_A2 : QUEST_DELIVRANCE_FROM_THE_PIT_A2);
+            if (status == QUEST_STATUS_COMPLETE || status == QUEST_STATUS_REWARDED)
+            {
+                AddGossipItemFor(player, creature->GetEntry() == NPC_SYLVANAS_PART1 ? GOSSIP_MENU_SYLVANAS : GOSISP_MENU_JAINA, GOSSIP_OPTION_START_SKIP, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
+            }
+            status = player->GetQuestStatus(creature->GetEntry() == NPC_JAINA_PART1 ? QUEST_WRATH_OF_THE_LICH_KING_A2 : QUEST_WRATH_OF_THE_LICH_KING_A2);
+            if (status == QUEST_STATUS_COMPLETE || status == QUEST_STATUS_REWARDED)
+            {
+                AddGossipItemFor(player, creature->GetEntry() == NPC_JAINA_PART1 ? GOSSIP_MENU_SYLVANAS : GOSISP_MENU_JAINA, GOSSIP_OPTION_START_SKIP, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
+            }
+
+
+
+
+
+
+
         }
 
         SendGossipMenuFor(player, player->GetGossipTextId(creature), creature->GetGUID());

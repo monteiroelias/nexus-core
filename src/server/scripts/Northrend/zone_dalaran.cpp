@@ -346,10 +346,10 @@ public:
                     return NPC_IGNIS_THE_FURNACE_MASTER_IMAGE;
                 case QUEST_XT_002_DECONSTRUCTOR_MUST_DIE:
                     return NPC_XT_002_DECONSTRUCTOR_IMAGE;
-                case QUEST_LORD_JARAXXUS_MUST_DIE:
-                    return NPC_LORD_JARAXXUS_IMAGE;
-                default: //case QUEST_LORD_MARROWGAR_MUST_DIE:
-                    return NPC_LORD_MARROWGAR_IMAGE;
+            //    case QUEST_LORD_JARAXXUS_MUST_DIE:
+            //      return NPC_LORD_JARAXXUS_IMAGE;
+            //    default: //case QUEST_LORD_MARROWGAR_MUST_DIE:
+            //      return NPC_LORD_MARROWGAR_IMAGE;
             }
         }
 

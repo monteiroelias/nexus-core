@@ -15,7 +15,6 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "InstanceMapScript.h"
 #include "MapMgr.h"
 #include "Transport.h"
 #include "halls_of_reflection.h"
@@ -230,11 +229,13 @@ public:
             switch(creature->GetEntry())
             {
                 case NPC_SYLVANAS_PART1:
+                   
+                    if (TeamIdInInstance == TEAM_ALLIANCE)
+                        creature->UpdateEntry(NPC_JAINA_PART1);
+
                     creature->SetVisible(false);
                     creature->SetSpeed(MOVE_RUN, 1.1);
                     NPC_LeaderIntroGUID = creature->GetGUID();
-                    if (TeamIdInInstance == TEAM_ALLIANCE)
-                        creature->UpdateEntry(NPC_JAINA_PART1);
                     creature->RemoveNpcFlag(UNIT_NPC_FLAG_GOSSIP | UNIT_NPC_FLAG_QUESTGIVER);
                     creature->RemoveUnitMovementFlag(MOVEMENTFLAG_WALKING);
                     break;
@@ -1212,4 +1213,3 @@ void AddSC_instance_halls_of_reflection()
 {
     new instance_halls_of_reflection();
 }
-
